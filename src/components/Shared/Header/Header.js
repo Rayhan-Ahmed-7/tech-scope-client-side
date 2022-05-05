@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { RiMenu4Fill, RiCloseFill } from 'react-icons/ri';
-import logo from '../../../images/logo2.svg';
+import logo from '../../../images/logo.svg';
 import './Header.css';
 
 const Header = () => {

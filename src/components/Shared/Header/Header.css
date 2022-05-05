@@ -6,7 +6,7 @@
 }
 .navLink::after{
     content: "";
-    background-color: #2BB673;
+    background-color: #FF2A51;
     width: 0%;
     height: 4px;
     position: absolute;
@@ -24,5 +24,5 @@
     width:100%;
 }
 .hover-color{
-    background-color: #2ac97c;
+    background-color: #FF2A51;
 }
