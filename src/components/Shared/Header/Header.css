@@ -23,3 +23,6 @@
 .navLink.active::after{
     width:100%;
 }
+.hover-color{
+    background-color: #2ac97c;
+}
