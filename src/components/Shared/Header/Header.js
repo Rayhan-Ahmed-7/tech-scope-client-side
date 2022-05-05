@@ -22,7 +22,7 @@ const Header = () => {
                         <RiCloseFill className='text-3xl'></RiCloseFill>
                         }
                     </span>
-                    <ul className={`${visible? 'opacity-100 translate-x-0':'opacity-0 translate-x-64'} flex flex-col md:flex-row md:gap-6 gap-4 md:translate-x-0 text-lg absolute md:static top-10 right-2 md:bg-transparent md:opacity-100 bg-white/80 backdrop-blur-sm rounded-md p-5 md:p-0 transition-all duration-300 z-10 md:items-center md:w-auto w-52`}>
+                    <ul className={`${visible? 'opacity-100 translate-x-0':'opacity-0 translate-x-64'} flex flex-col md:flex-row md:gap-6 gap-4 md:translate-x-0 text-lg absolute md:static top-10 right-2 md:bg-transparent md:opacity-100 bg-white/80 backdrop-blur-sm rounded-md p-5 md:p-0 transition-all duration-300 z-10 md:items-center md:w-auto w-52 border-y-4 md:border-0 border-y-rose-200`}>
                         <li>
                             <NavLink
                                 to='/'

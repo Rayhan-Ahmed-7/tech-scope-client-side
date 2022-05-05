@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Faster+One&family=Poppins&display=swap');
 body{
-    overflow: hidden;
+    overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
+}
+.l-spacing{
+    letter-spacing: 20px;
+
 }
 .font-poppins{
     font-family: 'Poppins', sans-serif;
