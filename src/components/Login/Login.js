@@ -1,10 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { BsArrowLeft } from 'react-icons/bs';
 import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const Login = () => {
+    const navigate = useNavigate();
     const { register, formState: { errors }, handleSubmit } = useForm();
     const handleLogin = (data) => {
         console.log(data);
@@ -20,6 +21,7 @@ const Login = () => {
                     <input {...register("email", { required: "email is required.!" })}
                         className="w-full rounded-3xl bg-slate-200 focus:outline-none mb-4 p-3"
                         type="email"
+                        placeholder='email'
                     />
                     {errors.email?.message && (
                         <p className='ml-4 mb-2 text-lg text-rose-600'>
@@ -29,6 +31,7 @@ const Login = () => {
                     <input {...register("password", { required: "password is required.!" })}
                         className="w-full rounded-3xl bg-slate-200 focus:outline-none mb-4 p-3"
                         type="password"
+                        placeholder='password'
                     />
                     {errors.password?.message && (
                         <p className='ml-4 mb-2 text-lg text-rose-600'>
@@ -37,7 +40,7 @@ const Login = () => {
                     )}
 
                     <div className='flex justify-between'>
-                        <p className='flex items-center hover:text-lightred hover:underline cursor-pointer'>
+                        <p onClick={()=>navigate("/signup")} className='flex items-center hover:text-lightred hover:underline cursor-pointer'>
                         <BsArrowLeft></BsArrowLeft>
                         <span className='ml-3 text-lg'>Sign up here</span>
                         </p>
