@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Faster+One&family=Poppins&display=swap');
+body{
+    overflow: hidden;
+}
+.font-poppins{
+    font-family: 'Poppins', sans-serif;
+}
+.font-fast{
+    font-family: 'Faster One', cursive;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
