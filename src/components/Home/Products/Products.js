@@ -1,9 +1,14 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Product from '../Product/Product';
 
 const Products = () => {
     const [products, setProducts] = useState([]);
+    const navigate = useNavigate();
+    const handleUpdate = (id)=>{
+        navigate(`/product/${id}`);
+    }
     useEffect(() => {
         axios.get('http://localhost:5000/products')
             .then(res => {
@@ -15,7 +20,7 @@ const Products = () => {
         <>
             <h2 className='text-center text-4xl font-extrabold mt-10 text-gray-800'>Products</h2>
             <div className='w-10/12 mx-auto grid md:grid-cols-3 grid-cols-1 gap-20 mt-20'>
-                {products.slice(0, 6).map(product => <Product key={product._id} product={product}></Product>)}
+                {products.slice(0, 6).map(product => <Product key={product._id} product={product} handleUpdate={handleUpdate}></Product>)}
             </div>
         </>
     );

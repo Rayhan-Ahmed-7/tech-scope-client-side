@@ -73,7 +73,7 @@ const Login = () => {
                         </button>
                     </div>
                 </form>
-                <Link to='forget-password' className='ml-3 text-lg text-right block mt-4 cursor-pointer hover:underline hover:text-lightred'>Forget password?</Link>
+                <Link to='/password-reset' className='ml-3 text-lg text-right block mt-4 cursor-pointer hover:underline hover:text-lightred'>Forget password?</Link>
                 <SocialLogin></SocialLogin>
             </div>
         </div>
