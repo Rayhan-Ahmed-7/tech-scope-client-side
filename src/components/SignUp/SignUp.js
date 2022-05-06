@@ -1,20 +1,23 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { BsArrowRight } from 'react-icons/bs';
 import SocialLogin from '../Shared/SocialLogin/SocialLogin';
-import { useAuthState, useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 
 const SignUp = () => {
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
+    console.log(from);
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [
         createUserWithEmailAndPassword,
         user,
         loading,
         error,
-    ] = useCreateUserWithEmailAndPassword(auth,{sendEmailVerification:true});
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
     const handleLogin = async (data) => {
         console.log(data);
@@ -24,9 +27,9 @@ const SignUp = () => {
         await createUserWithEmailAndPassword(email, password)
         await updateProfile({ displayName: name })
     }
-    if (user) {
-        console.log(user);
-        //navigate('/product/2')
+    if(user){
+        
+        navigate(from, { replace: true });
     }
     return (
         <div className='grid place-items-center'>
@@ -66,17 +69,17 @@ const SignUp = () => {
                             {errors.password?.message}
                         </p>
                     )}
-                    {error? <p className='text-rose-500'>{error?.message}</p>:""}
+                    {error ? <p className='text-rose-500'>{error?.message}</p> : ""}
                     <div className='flex justify-between'>
                         <p onClick={() => navigate("/login")} className='flex items-center hover:text-lightred hover:underline cursor-pointer flex-1'>
                             <span className='mr-3 text-lg'>Signed UP.? login</span>
                             <BsArrowRight></BsArrowRight>
                         </p>
                         <button className='bg-lightred text-white btn-transition py-2 px-4 rounded-3xl cursor-pointer flex items-center' type="submit">
-                            {loading?
-                            <div className='animate-spin h-6 w-6 rounded-full border-t-2 border-l-2 border-white mr-3'></div>
-                            :
-                            ""
+                            {loading ?
+                                <div className='animate-spin h-6 w-6 rounded-full border-t-2 border-l-2 border-white mr-3'></div>
+                                :
+                                ""
                             }
                             Sign Up
                         </button>

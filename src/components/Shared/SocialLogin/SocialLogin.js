@@ -3,9 +3,16 @@ import { RiFacebookFill } from 'react-icons/ri';
 import { BsGoogle } from 'react-icons/bs';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const SocialLogin = () => {
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
+    if(user){
+        navigate(from,{replace:true});
+    }
     return (
         <div className='mt-6'>
             <div className='flex items-center justify-center mb-4'>
