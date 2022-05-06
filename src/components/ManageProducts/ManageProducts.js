@@ -5,14 +5,15 @@ import './ManageProducts.css';
 import axios from 'axios';
 
 const ManageProducts = () => {
-    const [products] = useInventories();
+    const [products,setProducts] = useInventories();
     console.log(products);
     const handleDelete = async(id)=>{
-        const response = axios.delete(`http://localhost:5000/product/${id}`)
+        const response = axios.delete(`http://localhost:5000/products/${id}`)
         console.log(response);
+        setProducts(products.filter(product=>id !== product._id))
     }
     return (
-        <div className='w-10/12 mx-auto mt-10'>
+        <div className='w-10/12 mx-auto mt-10 mb-6'>
             <table className='border-2 border-collapse w-full p-2 '>
                 <thead className='bg-lightred text-white'>
                     <tr className='h-12'>

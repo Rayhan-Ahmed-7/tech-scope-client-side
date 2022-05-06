@@ -9,7 +9,7 @@ const useInventories = () => {
                 setProducts(res.data);
             })
     }, [])
-    return [products]
+    return [products,setProducts]
 };
 
 export default useInventories;
