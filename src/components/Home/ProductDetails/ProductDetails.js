@@ -1,9 +1,8 @@
-import { async } from '@firebase/util';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-const Inventory = () => {
+const ProductDetails = () => {
     const { id } = useParams();
     const [product, setProduct] = useState({});
     const [quantitys, setQuantity] = useState("");
@@ -20,7 +19,7 @@ const Inventory = () => {
     const handleUpdate = async (id) => {
         try {
             if (quantity >= 0) {
-                const response = await axios.put(`http://localhost:5000/products/${id}`, { quantity: quantity - 1 });
+                const response = await axios.put(`http://localhost:5000/products/${id}`, { quantity: quantitys - 1 });
                 setQuantity(quantitys - 1);
                 console.log(response);
             }
@@ -57,7 +56,7 @@ const Inventory = () => {
                     <button onClick={() => handleUpdate(id)} className='mt-5 px-4 py-2 bg-lightred text-white rounded btn-transition'>Delivered</button>
                 </div>
             </div>
-            <div className='p-4 rounded-xl shadow-xl lg:w-auto w-11/12 mx-auto'>
+            <div className='p-4 rounded-2xl shadow-xl lg:w-auto w-11/12 mx-auto md:mt-0 mt-10'>
                 <div className='flex items-center mb-10 '>
                     <h2 className='text-2xl font-bold mr-3'>Stock Items</h2>
                     <div className='h-1 w-24 rounded-md bg-lightred'></div>
@@ -76,4 +75,4 @@ const Inventory = () => {
     );
 };
 
-export default Inventory;
+export default ProductDetails;

@@ -1,0 +1,10 @@
+table tr{
+    border: 1px solid rgb(188, 188, 188);
+}
+table tbody tr:hover{
+    background-color: rgb(235, 235, 235);
+}
+table tr td{
+    padding: 5px 20px;
+    border: 1px solid rgb(188, 188, 188);
+}

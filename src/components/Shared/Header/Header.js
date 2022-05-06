@@ -33,12 +33,46 @@ const Header = () => {
                         <li>
                             <NavLink
                                 to='/'
-                                className={({ isActive }) => (isActive ? 'text-lightgreen navLink active' : "hover:text-lightgreen navLink text-gray-900"
+                                className={({ isActive }) => (isActive ? 'text-lightred navLink active' : "hover:text-lightgreen navLink text-gray-900"
                                 )}
                             >
                                 Home
                             </NavLink>
                         </li>
+                        {
+                            user?
+                            <>
+                            <li>
+                            <NavLink
+                                to='/manageproducts'
+                                className={({ isActive }) => (isActive ? 'text-lightred navLink active' : "hover:text-lightgreen navLink text-gray-900"
+                                )}
+                            >
+                                Manage Products
+                            </NavLink>
+                            </li>
+                            <li>
+                            <NavLink
+                                to='/addproduct'
+                                className={({ isActive }) => (isActive ? 'text-lightred navLink active' : "hover:text-lightgreen navLink text-gray-900"
+                                )}
+                            >
+                                Add Product
+                            </NavLink>
+                            </li>
+                            <li>
+                            <NavLink
+                                to='/myitems'
+                                className={({ isActive }) => (isActive ? 'text-lightred navLink active' : "hover:text-lightgreen navLink text-gray-900"
+                                )}
+                            >
+                                My Items
+                            </NavLink>
+                            </li>
+                            </>
+                            :
+                            ""
+                        }
                         <li>
                             <NavLink
                                 to='/blogs'
