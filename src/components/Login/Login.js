@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { BsArrowLeft } from 'react-icons/bs';
 import SocialLogin from '../Shared/SocialLogin/SocialLogin';
@@ -8,6 +8,8 @@ import auth from '../../firebase.init';
 
 const Login = () => {
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [
         signInWithEmailAndPassword,
@@ -23,6 +25,7 @@ const Login = () => {
     }
     if(user){
         console.log(user);
+        navigate(from,{replace:true});
     }
     return (
         <div className='grid place-items-center'>
