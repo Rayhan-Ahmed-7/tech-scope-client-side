@@ -1,21 +1,15 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import useInventories from '../../../Hooks/useInventories';
 import Product from '../Product/Product';
 
 const Products = () => {
-    const [products, setProducts] = useState([]);
+    const [products] = useInventories();
     const navigate = useNavigate();
     const handleUpdate = (id)=>{
         navigate(`/product/${id}`);
     }
-    useEffect(() => {
-        axios.get('http://localhost:5000/products')
-            .then(res => {
-                console.log(res.data);
-                setProducts(res.data);
-            })
-    }, [])
     return (
         <>
             <h2 className='text-center text-4xl font-extrabold mt-10 text-gray-800'>Products</h2>
