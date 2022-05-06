@@ -3,16 +3,30 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { BsArrowLeft } from 'react-icons/bs';
 import SocialLogin from '../Shared/SocialLogin/SocialLogin';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 const Login = () => {
     const navigate = useNavigate();
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const handleLogin = (data) => {
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+      ] = useSignInWithEmailAndPassword(auth);
+    const handleLogin = async(data) => {
         console.log(data);
+        const email = data.email;
+        const password = data.password;
+        await signInWithEmailAndPassword(email,password)
+    }
+    if(user){
+        console.log(user);
     }
     return (
         <div className='grid place-items-center'>
-            <div className='w-4/12 rounded-xl mt-10 bg-[#ffffff] text-gray-800 p-10 custom-shadow'>
+            <div className='md:w-4/12 w-10/12 rounded-xl mt-10 bg-[#ffffff] text-gray-800 p-10 custom-shadow'>
                 <div className='flex items-center mb-10 '>
                     <h2 className='text-2xl font-bold mr-3'>Login</h2>
                     <div className='h-1 w-24 rounded-md bg-lightred'></div>
@@ -38,13 +52,25 @@ const Login = () => {
                             {errors.password?.message}
                         </p>
                     )}
-
+                    {
+                        error?
+                        <p className='text-rose-500'>{error.message}</p>
+                        :
+                        ""
+                    }
                     <div className='flex justify-between'>
                         <p onClick={()=>navigate("/signup")} className='flex items-center hover:text-lightred hover:underline cursor-pointer'>
                         <BsArrowLeft></BsArrowLeft>
                         <span className='ml-3 text-lg'>Sign up here</span>
                         </p>
-                        <button className='bg-lightred text-white btn-transition py-2 px-4 rounded-3xl cursor-pointer' type="submit">Login</button>
+                        <button className='bg-lightred text-white btn-transition py-2 px-4 rounded-3xl cursor-pointer flex items-center' type="submit">
+                        {loading?
+                            <div className='animate-spin h-6 w-6 rounded-full border-t-2 border-l-2 border-white mr-3'></div>
+                            :
+                            ""
+                        }
+                        Login
+                        </button>
                     </div>
                 </form>
                 <Link to='forget-password' className='ml-3 text-lg text-right block mt-4 cursor-pointer hover:underline hover:text-lightred'>Forget password?</Link>

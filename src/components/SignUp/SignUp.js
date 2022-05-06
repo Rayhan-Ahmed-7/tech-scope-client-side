@@ -3,9 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { BsArrowRight } from 'react-icons/bs';
 import SocialLogin from '../Shared/SocialLogin/SocialLogin';
-import { useAuthState, useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useAuthState, useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
-import { updateProfile } from 'firebase/auth';
 
 const SignUp = () => {
     const navigate = useNavigate();
@@ -16,7 +15,9 @@ const SignUp = () => {
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
     const handleLogin = async (data) => {
+        console.log(data);
         const name = data.name;
         const email = data.email;
         const password = data.password;
@@ -25,11 +26,11 @@ const SignUp = () => {
     }
     if (user) {
         console.log(user);
-        navigate('/product/2')
+        //navigate('/product/2')
     }
     return (
         <div className='grid place-items-center'>
-            <div className='w-4/12 rounded-xl mt-10 bg-[#ffffff] text-gray-800 p-10 custom-shadow'>
+            <div className='md:w-4/12 w-10/12 rounded-xl mt-10 bg-[#ffffff] text-gray-800 p-10 custom-shadow'>
                 <div className='flex items-center mb-10 '>
                     <h2 className='text-2xl font-bold mr-3'>Sign Up</h2>
                     <div className='h-1 w-24 rounded-md bg-lightred'></div>
@@ -67,8 +68,8 @@ const SignUp = () => {
                     )}
                     {error? <p className='text-rose-500'>{error?.message}</p>:""}
                     <div className='flex justify-between'>
-                        <p onClick={() => navigate("/login")} className='flex items-center hover:text-lightred hover:underline cursor-pointer'>
-                            <span className='mr-3 text-lg'>Already have Account.? login</span>
+                        <p onClick={() => navigate("/login")} className='flex items-center hover:text-lightred hover:underline cursor-pointer flex-1'>
+                            <span className='mr-3 text-lg'>Signed UP.? login</span>
                             <BsArrowRight></BsArrowRight>
                         </p>
                         <button className='bg-lightred text-white btn-transition py-2 px-4 rounded-3xl cursor-pointer flex items-center' type="submit">

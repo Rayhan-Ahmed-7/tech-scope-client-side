@@ -3,9 +3,16 @@ import { Link, NavLink } from 'react-router-dom';
 import { RiMenu4Fill, RiCloseFill } from 'react-icons/ri';
 import logo from '../../../images/logo.svg';
 import './Header.css';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../../firebase.init';
+import { signOut } from 'firebase/auth';
 
 const Header = () => {
-    const [visible,setVisible] = useState(false);
+    const [user] = useAuthState(auth);
+    const [visible, setVisible] = useState(false);
+    const handleSignOut = ()=>{
+        signOut(auth)
+    }
     return (
         <header className='py-4 px-2 bg-white custom-shadow'>
             <nav className='w-11/12 mx-auto flex justify-between items-center'>
@@ -15,14 +22,14 @@ const Header = () => {
                     </Link>
                 </div>
                 <div className='relative'>
-                    <span onClick={()=>setVisible(!visible)} className='md:hidden visible cursor-pointer'>
-                        {!visible?
-                        <RiMenu4Fill className='text-3xl'></RiMenu4Fill>
-                        :
-                        <RiCloseFill className='text-3xl'></RiCloseFill>
+                    <span onClick={() => setVisible(!visible)} className='md:hidden visible cursor-pointer'>
+                        {!visible ?
+                            <RiMenu4Fill className='text-3xl'></RiMenu4Fill>
+                            :
+                            <RiCloseFill className='text-3xl'></RiCloseFill>
                         }
                     </span>
-                    <ul className={`${visible? 'opacity-100 translate-x-0':'opacity-0 translate-x-64'} flex flex-col md:flex-row md:gap-6 gap-4 md:translate-x-0 text-lg absolute md:static top-10 right-2 md:bg-transparent md:opacity-100 bg-white/80 backdrop-blur-sm rounded-md p-5 md:p-0 transition-all duration-300 z-10 md:items-center md:w-auto w-52 border-y-4 md:border-0 border-y-rose-200`}>
+                    <ul className={`${visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-64'} flex flex-col md:flex-row md:gap-6 gap-4 md:translate-x-0 text-lg absolute md:static top-10 right-2 md:bg-transparent md:opacity-100 bg-white/80 backdrop-blur-sm rounded-md p-5 md:p-0 transition-all duration-300 z-10 md:items-center md:w-auto w-52 border-y-4 md:border-0 border-y-rose-200`}>
                         <li>
                             <NavLink
                                 to='/'
@@ -41,15 +48,20 @@ const Header = () => {
                                 Blogs
                             </NavLink>
                         </li>
-                        <li>
-                            <NavLink
-                                to='/login'
-                                className={({ isActive }) => (isActive ? 'text-lightgreen navLink active' : "hover:text-lightgreen navLink text-gray-900"
-                                )}
-                            >
-                                Login
-                            </NavLink>
-                        </li>
+                        {
+                            user ?
+                                <button onClick={handleSignOut} className='px-3 py-2 bg-lightred rounded-3xl text-white'>SignOut</button>
+                                :
+                                <li>
+                                    <NavLink
+                                        to='/login'
+                                        className={({ isActive }) => (isActive ? 'text-lightgreen navLink active' : "hover:text-lightgreen navLink text-gray-900"
+                                        )}
+                                    >
+                                        Login
+                                    </NavLink>
+                                </li>
+                        }
                     </ul>
                 </div>
             </nav>
