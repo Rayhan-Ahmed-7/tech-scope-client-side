@@ -6,8 +6,10 @@ import axios from 'axios';
 
 const ManageProducts = () => {
     const [products] = useInventories();
+    console.log(products);
     const handleDelete = async(id)=>{
-        //axios.delete()
+        const response = axios.delete(`http://localhost:5000/product/${id}`)
+        console.log(response);
     }
     return (
         <div className='w-10/12 mx-auto mt-10'>

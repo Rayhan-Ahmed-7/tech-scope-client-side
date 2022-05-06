@@ -66,7 +66,7 @@ const Header = () => {
                                 className={({ isActive }) => (isActive ? 'text-lightred navLink active' : "hover:text-lightgreen navLink text-gray-900"
                                 )}
                             >
-                                My Items
+                                My Products
                             </NavLink>
                             </li>
                             </>
