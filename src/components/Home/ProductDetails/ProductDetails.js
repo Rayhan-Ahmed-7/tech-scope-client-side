@@ -1,11 +1,13 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import Loading from '../../Loading/Loading';
 
 const ProductDetails = () => {
     const { id } = useParams();
     const [product, setProduct] = useState({});
     const [quantitys, setQuantity] = useState("");
+    const [loading, setLoading] = useState(true);
     const [error,setError] = useState("");
     useEffect(() => {
         axios.get(`https://ancient-fjord-89568.herokuapp.com/products/${id}`)
@@ -13,14 +15,18 @@ const ProductDetails = () => {
                 console.log(res.data);
                 setProduct(res.data);
                 setQuantity(res.data?.quantity);
+                setLoading(false);
             })
     }, [])
+    if(loading){
+        return <Loading></Loading>
+    }
     const { name, img, suplierName, description, price, quantity } = product;
     const handleUpdate = async (id) => {
         try {
             if (quantity >= 0) {
-                const response = await axios.put(`https://ancient-fjord-89568.herokuapp.com/products/${id}`, { quantity: quantitys - 1 });
                 setQuantity(quantitys - 1);
+                const response = await axios.put(`https://ancient-fjord-89568.herokuapp.com/products/${id}`, { quantity: quantitys - 1 });
                 console.log(response);
             }
         }
@@ -37,8 +43,8 @@ const ProductDetails = () => {
         }else{
             setError("");
         }
-        const response = await axios.put(`https://ancient-fjord-89568.herokuapp.com/products/${id}`, { quantity: newQuantity+quantitys});
         setQuantity(newQuantity+quantitys);
+        const response = await axios.put(`https://ancient-fjord-89568.herokuapp.com/products/${id}`, { quantity: newQuantity+quantitys});
         e.target.reset();
     }
     return (
