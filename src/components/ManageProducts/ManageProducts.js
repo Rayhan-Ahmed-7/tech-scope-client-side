@@ -18,7 +18,7 @@ const ManageProducts = () => {
         return <Loading></Loading>
     }
     return (
-            <div className='md:w-10/12 w-full h-screen md:p-0 p-2 mx-auto mt-10 mb-6 overflow-x-scroll'>
+            <div className='md:w-10/12 w-full min-h-screen md:p-0 p-2 mx-auto mt-10 mb-6 overflow-x-scroll'>
             <table className='border-2 border-collapse w-full p-2 '>
                 <thead className='bg-lightred text-white'>
                     <tr className='h-12'>
