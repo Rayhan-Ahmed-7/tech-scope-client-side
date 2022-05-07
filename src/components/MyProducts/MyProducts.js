@@ -1,23 +1,35 @@
 import axios from 'axios';
+import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../Loading/Loading';
 import MyProduct from '../MyProduct/MyProduct';
 
 const MyProducts = () => {
     const [myProducts, setMyProducts] = useState([]);
-    const [user,loading] = useAuthState(auth);
+    const [loading,setLoading] = useState(true);
+    const navigate = useNavigate();
+    const [user] = useAuthState(auth);
     useEffect(() => {
         const userProduct = async () => {
             try {
-                const res = await axios.get(`https://ancient-fjord-89568.herokuapp.com/myproducts?email=${user?.email}`)
-                console.log(res.data);
+                const res = await axios.get(`https://ancient-fjord-89568.herokuapp.com/myproducts?email=${user?.email}`,{
+                headers:{
+                    authorization:`Bearer ${localStorage.getItem('accessToken')}`
+                } 
+                })
+                //console.log(res.data);
                 setMyProducts(res.data);
+                setLoading(false);
             }
             catch(error){
-                console.log(error)
+                //console.log(error)
+                if(error.response.status === 401 || error.response.status === 403){
+                    signOut(auth);
+                    navigate('/login');
+                  }
             }
         }
         userProduct();
@@ -27,7 +39,7 @@ const MyProducts = () => {
     }
     const handleDelete = async (id) => {
         const response = await axios.delete(`https://ancient-fjord-89568.herokuapp.com/products/${id}`)
-        console.log(response);
+        //console.log(response);
         setMyProducts(myProducts.filter(product=>id !== product._id))
     }
     return (
