@@ -14,7 +14,7 @@ const AddProduct = () => {
     }
     return (
         <div className='grid place-items-center'>
-            <div className='md:w-4/12 w-10/12 rounded-xl mt-10 bg-[#ffffff] text-gray-800 p-10 custom-shadow'>
+            <div className='md:w-4/12 w-11/12 rounded-xl mt-10 bg-[#ffffff] text-gray-800 md:p-10 p-4 custom-shadow'>
                 <div className='flex flex-col items-center mb-10 '>
                     <h2 className='text-2xl font-bold mr-3'>Add A New Product</h2>
                     <div className='h-1 w-44 rounded-md bg-lightred'></div>

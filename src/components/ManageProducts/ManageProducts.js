@@ -13,7 +13,8 @@ const ManageProducts = () => {
         setProducts(products.filter(product=>id !== product._id))
     }
     return (
-        <div className='md:w-10/12 w-full md:p-0 p-2 mx-auto mt-10 mb-6 overflow-x-scroll'>
+        <div className='overflow-x-hidden'>
+            <div className='md:w-10/12 w-full md:p-0 p-2 mx-auto mt-10 mb-6 overflow-x-scroll'>
             <table className='border-2 border-collapse w-full p-2 '>
                 <thead className='bg-lightred text-white'>
                     <tr className='h-12'>
@@ -36,6 +37,7 @@ const ManageProducts = () => {
                     </tr>)}
                 </tbody>
             </table>
+        </div>
         </div>
     );
 };
