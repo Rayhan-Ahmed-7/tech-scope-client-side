@@ -8,3 +8,8 @@ table tr td{
     padding: 5px 20px;
     border: 1px solid rgb(188, 188, 188);
 }
+@media (max-width:768px){
+    table tr td{
+        padding: 5px 5px;
+    }
+}
