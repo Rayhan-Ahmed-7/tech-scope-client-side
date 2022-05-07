@@ -21,7 +21,7 @@ const SocialLogin = () => {
                 <div className='h-[2px] w-20 bg-slate-700'></div>
             </div>
             <p className='text-lg font-medium text-center'>Continue with-</p>
-            <div className='flex justify-center gap-6 mt-4'>
+            <div className='flex md:justify-center justify-between gap-6 mt-4'>
                 <button onClick={()=>signInWithGoogle()} className='flex items-center gap-2 py-2 px-4 rounded-md bg-red-500 text-white'>
                     <BsGoogle className='text-xl'/>
                     <p className='text-lg font-medium'>Google</p>

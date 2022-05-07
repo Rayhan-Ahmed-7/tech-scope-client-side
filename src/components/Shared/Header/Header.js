@@ -15,13 +15,13 @@ const Header = () => {
     }
     return (
         <header className='py-4 px-2 bg-white custom-shadow'>
-            <nav className='w-11/12 mx-auto flex justify-between items-center'>
+            <nav className='w-11/12 mx-auto flex justify-between items-center relative'>
                 <div className="logo">
                     <Link to='/'>
                         <img className='md:h-12 h-10' src={logo} alt="logo" />
                     </Link>
                 </div>
-                <div className='relative'>
+                {/* <div className=''> */}
                     <span onClick={() => setVisible(!visible)} className='md:hidden visible cursor-pointer'>
                         {!visible ?
                             <RiMenu4Fill className='text-3xl'></RiMenu4Fill>
@@ -29,11 +29,11 @@ const Header = () => {
                             <RiCloseFill className='text-3xl'></RiCloseFill>
                         }
                     </span>
-                    <ul className={`${visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-64'} flex flex-col md:flex-row md:gap-6 gap-6 md:translate-x-0 text-lg absolute md:static top-10 right-2 md:bg-transparent md:opacity-100 bg-white/80 backdrop-blur-sm rounded-md p-5 md:p-0 transition-all duration-300 z-100 md:items-center md:w-auto w-52 border-y-4 md:border-0 border-y-rose-200`}>
+                    <ul className={`${visible ? 'opacity-100 right-2' : 'opacity-100 -right-64'} flex flex-col md:flex-row md:space-x-6 space-x-0 md:space-y-0 space-y-4 text-lg absolute md:static top-10 right-2 md:bg-transparent md:opacity-100 bg-white/80 backdrop-blur-sm rounded-md p-5 md:p-0 transition-all duration-300 z-100 md:items-center md:w-auto w-52 border-y-4 md:border-0 border-y-rose-200`}>
                         <li>
                             <NavLink
                                 to='/'
-                                className={({ isActive }) => (isActive ? 'text-lightred navLink active' : "hover:text-lightgreen navLink text-gray-900"
+                                className={({ isActive }) => (isActive ? 'text-lightred navLink active' : "hover:text-lightred navLink text-gray-900"
                                 )}
                             >
                                 Home
@@ -45,7 +45,7 @@ const Header = () => {
                             <li>
                             <NavLink
                                 to='/manageproducts'
-                                className={({ isActive }) => (isActive ? 'text-lightred navLink active' : "hover:text-lightgreen navLink text-gray-900"
+                                className={({ isActive }) => (isActive ? 'text-lightred navLink active' : "hover:text-lightred navLink text-gray-900"
                                 )}
                             >
                                 Manage Products
@@ -54,7 +54,7 @@ const Header = () => {
                             <li>
                             <NavLink
                                 to='/addproduct'
-                                className={({ isActive }) => (isActive ? 'text-lightred navLink active' : "hover:text-lightgreen navLink text-gray-900"
+                                className={({ isActive }) => (isActive ? 'text-lightred navLink active' : "hover:text-lightred navLink text-gray-900"
                                 )}
                             >
                                 Add Product
@@ -63,7 +63,7 @@ const Header = () => {
                             <li>
                             <NavLink
                                 to='/myproducts'
-                                className={({ isActive }) => (isActive ? 'text-lightred navLink active' : "hover:text-lightgreen navLink text-gray-900"
+                                className={({ isActive }) => (isActive ? 'text-lightred navLink active' : "hover:text-lightred navLink text-gray-900"
                                 )}
                             >
                                 My Products
@@ -76,7 +76,7 @@ const Header = () => {
                         <li>
                             <NavLink
                                 to='/blogs'
-                                className={({ isActive }) => (isActive ? 'text-lightgreen navLink active' : "hover:text-lightgreen navLink text-gray-900"
+                                className={({ isActive }) => (isActive ? 'text-lightred navLink active' : "hover:text-lightred navLink text-gray-900"
                                 )}
                             >
                                 Blogs
@@ -89,7 +89,7 @@ const Header = () => {
                                 <li>
                                     <NavLink
                                         to='/login'
-                                        className={({ isActive }) => (isActive ? 'text-lightgreen navLink active' : "hover:text-lightgreen navLink text-gray-900"
+                                        className={({ isActive }) => (isActive ? 'text-lightred navLink active' : "hover:text-lightred navLink text-gray-900"
                                         )}
                                     >
                                         Login
@@ -97,7 +97,7 @@ const Header = () => {
                                 </li>
                         }
                     </ul>
-                </div>
+                {/* </div> */}
             </nav>
         </header>
     );

@@ -5,10 +5,11 @@ import './ManageProducts.css';
 import axios from 'axios';
 
 const ManageProducts = () => {
+    //https://ancient-fjord-89568.herokuapp.com
     const [products,setProducts] = useInventories();
     console.log(products);
     const handleDelete = async(id)=>{
-        const response = axios.delete(`https://tech-scope.onrender.com/products/${id}`)
+        const response = axios.delete(`https://ancient-fjord-89568.herokuapp.com/products/${id}`)
         console.log(response);
         setProducts(products.filter(product=>id !== product._id))
     }

@@ -8,7 +8,7 @@ const ProductDetails = () => {
     const [quantitys, setQuantity] = useState("");
     const [error,setError] = useState("");
     useEffect(() => {
-        axios.get(`https://tech-scope.onrender.com/products/${id}`)
+        axios.get(`https://ancient-fjord-89568.herokuapp.com/products/${id}`)
             .then(res => {
                 console.log(res.data);
                 setProduct(res.data);
@@ -19,7 +19,7 @@ const ProductDetails = () => {
     const handleUpdate = async (id) => {
         try {
             if (quantity >= 0) {
-                const response = await axios.put(`https://tech-scope.onrender.com/products/${id}`, { quantity: quantitys - 1 });
+                const response = await axios.put(`https://ancient-fjord-89568.herokuapp.com/products/${id}`, { quantity: quantitys - 1 });
                 setQuantity(quantitys - 1);
                 console.log(response);
             }
@@ -37,7 +37,7 @@ const ProductDetails = () => {
         }else{
             setError("");
         }
-        const response = await axios.put(`https://tech-scope.onrender.com/products/${id}`, { quantity: newQuantity+quantitys});
+        const response = await axios.put(`https://ancient-fjord-89568.herokuapp.com/products/${id}`, { quantity: newQuantity+quantitys});
         setQuantity(newQuantity+quantitys);
         e.target.reset();
     }
