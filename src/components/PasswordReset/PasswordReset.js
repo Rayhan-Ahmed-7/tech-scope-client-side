@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { BsArrowLeft } from 'react-icons/bs';
 import { useSendPasswordResetEmail } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import { toast } from 'react-toastify';
 
 const PasswordReset = () => {
     const navigate = useNavigate();
@@ -13,6 +14,7 @@ const PasswordReset = () => {
         console.log(data);
         const email = data.email;
         const res = await sendPasswordResetEmail(email)
+        toast("A password Reset email has been sent to your email")
         console.log(res);
     }
     return (

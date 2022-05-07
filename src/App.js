@@ -12,6 +12,8 @@ import PasswordReset from './components/PasswordReset/PasswordReset';
 import RequireAuth from './components/RequireAuth/RequireAuth';
 import Header from './components/Shared/Header/Header';
 import SignUp from './components/SignUp/SignUp';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -45,6 +47,7 @@ function App() {
         <Route path='/password-reset' element={<PasswordReset></PasswordReset>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
+      <ToastContainer></ToastContainer>
     </div>
   );
 }

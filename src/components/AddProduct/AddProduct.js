@@ -2,15 +2,18 @@ import axios from 'axios';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 
 const AddProduct = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [user] = useAuthState(auth);
-    const handleAddProduct = async(data)=>{
+    const handleAddProduct = async(data,e)=>{
         console.log(data);
         const res = axios.post("https://ancient-fjord-89568.herokuapp.com/products",{product:data})
+        toast("Product added go to manage items to see")
         console.log(res);
+        e.target.reset();
     }
     return (
         <div className='grid place-items-center'>

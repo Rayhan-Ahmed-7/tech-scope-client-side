@@ -5,12 +5,12 @@ import { BsArrowLeft } from 'react-icons/bs';
 import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import axios from 'axios';
 
 const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
-    console.log(from);
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [
         signInWithEmailAndPassword,
@@ -19,13 +19,13 @@ const Login = () => {
         error,
       ] = useSignInWithEmailAndPassword(auth);
     const handleLogin = async(data) => {
-        console.log(data);
         const email = data.email;
         const password = data.password;
         await signInWithEmailAndPassword(email,password)
+        const res = await axios.post('https://ancient-fjord-89568.herokuapp.com/login', { email });
+        localStorage.setItem('accessToken', res?.data.accessToken);
     }
     if(user){
-        console.log(user);
         navigate(from,{replace:true});
     }
     return (
