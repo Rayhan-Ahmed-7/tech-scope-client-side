@@ -8,7 +8,7 @@ const ManageProducts = () => {
     const [products,setProducts] = useInventories();
     console.log(products);
     const handleDelete = async(id)=>{
-        const response = axios.delete(`http://localhost:5000/products/${id}`)
+        const response = axios.delete(`https://tech-scope.onrender.com/products/${id}`)
         console.log(response);
         setProducts(products.filter(product=>id !== product._id))
     }

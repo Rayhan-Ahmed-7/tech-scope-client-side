@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 const useInventories = () => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        axios.get('http://localhost:5000/products')
+        axios.get('https://tech-scope.onrender.com/products')
             .then(res => {
                 setProducts(res.data);
             })

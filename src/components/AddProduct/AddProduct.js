@@ -9,7 +9,7 @@ const AddProduct = () => {
     const [user] = useAuthState(auth);
     const handleAddProduct = async(data)=>{
         console.log(data);
-        const res = axios.post("http://localhost:5000/products",{product:data})
+        const res = axios.post("https://tech-scope.onrender.com/products",{product:data})
         console.log(res);
     }
     return (
