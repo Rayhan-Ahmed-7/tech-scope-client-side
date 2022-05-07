@@ -14,10 +14,11 @@ import Header from './components/Shared/Header/Header';
 import SignUp from './components/SignUp/SignUp';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Footer from './components/Shared/Footer/Footer';
 
 function App() {
   return (
-    <div className="App overflow-x-hidden w-full">
+    <div className="App overflow-x-hidden">
       <Header></Header>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
@@ -47,6 +48,7 @@ function App() {
         <Route path='/password-reset' element={<PasswordReset></PasswordReset>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
+      <Footer></Footer>
       <ToastContainer></ToastContainer>
     </div>
   );

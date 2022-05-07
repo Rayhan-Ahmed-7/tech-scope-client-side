@@ -3,15 +3,19 @@ import useInventories from '../../Hooks/useInventories';
 import { FaTrash } from 'react-icons/fa';
 import './ManageProducts.css';
 import axios from 'axios';
+import Loading from '../Loading/Loading';
 
 const ManageProducts = () => {
     //https://ancient-fjord-89568.herokuapp.com
-    const [products,setProducts] = useInventories();
+    const [products,setProducts,loading] = useInventories();
     console.log(products);
     const handleDelete = async(id)=>{
-        const response = axios.delete(`https://ancient-fjord-89568.herokuapp.com/products/${id}`)
+        const response = await axios.delete(`https://ancient-fjord-89568.herokuapp.com/products/${id}`)
         console.log(response);
         setProducts(products.filter(product=>id !== product._id))
+    }
+    if(loading){
+        return <Loading></Loading>
     }
     return (
             <div className='md:w-10/12 w-full h-screen md:p-0 p-2 mx-auto mt-10 mb-6 overflow-x-scroll'>

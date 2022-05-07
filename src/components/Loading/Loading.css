@@ -2,17 +2,13 @@
     height: 100vh;
     width: 100vw;
     font-family: Helvetica;
+    display: grid;
+    place-items: center;
   }
   
   .loader {
     height: 20px;
     width: 250px;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
   }
   .loader--dot {
     animation-name: loader;
@@ -51,12 +47,10 @@
     animation-delay: 0s;
   }
   .loader--text {
-    position: absolute;
-    top: 200%;
-    left: 0;
-    right: 0;
+    margin-top: -20px;
     width: 4rem;
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
   }
   .loader--text:after {
     content: "Loading";

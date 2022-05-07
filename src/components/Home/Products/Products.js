@@ -1,13 +1,17 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import useInventories from '../../../Hooks/useInventories';
+import Loading from '../../Loading/Loading';
 import Product from '../Product/Product';
 
 const Products = () => {
-    const [products] = useInventories();
+    const [products,setProducts,loading] = useInventories();
     const navigate = useNavigate();
     const handleUpdate = (id)=>{
         navigate(`/product/${id}`);
+    }
+    if(loading){
+        return <Loading></Loading>
     }
     return (
         <>
