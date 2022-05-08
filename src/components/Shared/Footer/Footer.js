@@ -7,7 +7,7 @@ const Footer = () => {
             <div className='w-10/12 mx-auto grid md:grid-cols-4 py-5'>
                 <div>
                     <img src={logo} alt="" />
-                    <p className='text-gray-300 text-md font-thin'>
+                    <p className='text-gray-300 text-md font-normal'>
                     We believe in digital transformation and technology. and technology is the key to make people life easier.
                     if your look at your daily life you will see electronics everywhere phone, laptop ,water filter, hair dryer everywhere people is using technology.
                     </p>
