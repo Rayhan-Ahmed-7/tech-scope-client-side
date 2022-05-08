@@ -2,7 +2,7 @@ import React from 'react';
 
 const Blogs = () => {
     return (
-        <div className='w-10/12 mx-auto mt-6 grid lg:grid-cols-2 grid-cols-1 gap-4 mb-8'>
+        <div className='w-10/12 mx-auto mt-6 grid lg:grid-cols-2 grid-cols-1 gap-8 mb-8'>
             <div className='md:mt-0 mt-4'>
                 <h2 className='text-2xl font-bold text-gray-800'>what is the Difference between javascript and nodejs.?</h2>
                 <p className='text-justify text-gray-800 mt-3'>
@@ -34,6 +34,13 @@ const Blogs = () => {
                 <p className='text-justify text-gray-800 mt-3'>
                 <span className='text-xl font-bold text-gray-900'>NOSQL: </span>
                 They have dynamic schema. These databases are best suited for hierarchical data storage. These databases are not so good for complex queries. Horizontally scalable.
+                </p>
+            </div>
+            <div className='md:mt-0 mt-4'>
+                <h2 className='text-2xl font-bold text-gray-800'>What is the purpose of jwt and how does it work.?</h2>
+                <p className='text-justify text-gray-800 mt-3'>
+                <span className='text-xl font-bold text-gray-900'>JWT: </span>
+                JWT, or JSON Web Token, is an open standard used to share security information between two parties — a client and a server. Each JWT contains encoded JSON objects, including a set of claims. JWTs are signed using a cryptographic algorithm to ensure that the claims cannot be altered after the token is issued.
                 </p>
             </div>
         </div>
