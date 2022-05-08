@@ -3,6 +3,7 @@ import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Loading from '../Loading/Loading';
 import MyProduct from '../MyProduct/MyProduct';
@@ -38,9 +39,13 @@ const MyProducts = () => {
         return <Loading></Loading>
     }
     const handleDelete = async (id) => {
-        const response = await axios.delete(`https://ancient-fjord-89568.herokuapp.com/products/${id}`)
-        //console.log(response);
-        setMyProducts(myProducts.filter(product=>id !== product._id))
+        const confirmation = window.confirm("You sure about deleting this item.?");
+        if(confirmation){
+            setMyProducts(myProducts.filter(product=>id !== product._id))
+            const response = await axios.delete(`https://ancient-fjord-89568.herokuapp.com/products/${id}`)
+            //console.log(response);
+            toast("item is deleted");
+        }
     }
     return (
         <div className='min-h-screen w-10/12 mx-auto'>

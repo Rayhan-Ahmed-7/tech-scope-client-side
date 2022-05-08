@@ -1,7 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Loading from '../../Loading/Loading';
+import { BsArrowRight } from 'react-icons/bs';
 
 const ProductDetails = () => {
     const { id } = useParams();
@@ -48,7 +49,8 @@ const ProductDetails = () => {
         e.target.reset();
     }
     return (
-        <div className='xl:w-10/12 w-11/12 mx-auto mt-10 gap-4 flex lg:flex-row flex-col md:items-center'>
+        <div className='xl:w-10/12 w-11/12 mx-auto min-h-screen '>
+        <div className='mt-10 gap-4 flex lg:flex-row flex-col md:items-center'>
             <div className='lg:w-9/12 w-full mx-auto flex lg:flex-row flex-col p-4 rounded-xl shadow-lg'>
                 <img className='rounded-xl' src={img} alt="" />
                 <div className='md:ml-5 mt-5'>
@@ -62,7 +64,7 @@ const ProductDetails = () => {
                     <button onClick={() => handleUpdate(id)} className='mt-5 px-4 py-2 bg-lightred text-white rounded btn-transition'>Delivered</button>
                 </div>
             </div>
-            <div className='p-4 rounded-2xl shadow-xl lg:w-auto w-full mx-auto md:mt-0 mt-10 mb-10'>
+            <div className='p-4 rounded-2xl shadow-xl lg:w-auto w-full mx-auto md:mt-0 mt-10'>
                 <div className='flex items-center mb-10 '>
                     <h2 className='text-2xl font-bold mr-3'>Stock Items</h2>
                     <div className='h-1 w-24 rounded-md bg-lightred'></div>
@@ -76,6 +78,10 @@ const ProductDetails = () => {
                         </button>
                     </div>
                 </form>
+            </div>
+        </div>
+            <div className='flex justify-center'>
+            <Link className='p-2 bg-lightred rounded-md flex items-center text-white mt-5 btn-transition' to='/manageproducts'>Manage Products <BsArrowRight className='ml-2'></BsArrowRight></Link>
             </div>
         </div>
     );
