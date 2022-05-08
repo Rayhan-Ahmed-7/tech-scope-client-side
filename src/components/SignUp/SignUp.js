@@ -11,7 +11,7 @@ const SignUp = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
-    console.log(from);
+    //console.log(from);
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [
         createUserWithEmailAndPassword,
@@ -21,17 +21,18 @@ const SignUp = () => {
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
     const handleLogin = async (data) => {
-        console.log(data);
+        //console.log(data);
         const name = data.name;
         const email = data.email;
         const password = data.password;
         await createUserWithEmailAndPassword(email, password)
         await updateProfile({ displayName: name })
+        //sending email for jwt verification
         const res = await axios.post('https://ancient-fjord-89568.herokuapp.com/login', { email });
         localStorage.setItem('accessToken', res?.data.accessToken);
     }
     if(user){
-        
+        //navigating the user when user is true
         navigate(from, { replace: true });
     }
     return (
