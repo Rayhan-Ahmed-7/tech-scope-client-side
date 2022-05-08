@@ -82,6 +82,15 @@ const Header = () => {
                                 Blogs
                             </NavLink>
                         </li>
+                        <li>
+                            <NavLink
+                                to='/jobs'
+                                className={({ isActive }) => (isActive ? 'text-lightred navLink active' : "hover:text-lightred navLink text-gray-900"
+                                )}
+                            >
+                                Jobs
+                            </NavLink>
+                        </li>
                         {
                             user ?
                                 <button onClick={handleSignOut} className='px-3 py-2 bg-lightred rounded-3xl text-white'>SignOut</button>

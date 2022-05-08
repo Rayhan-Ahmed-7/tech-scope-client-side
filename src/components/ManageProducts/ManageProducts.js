@@ -25,7 +25,7 @@ const ManageProducts = () => {
     }
     return (
         <>
-            <div className='md:w-10/12 w-full min-h-screen md:p-0 p-2 mx-auto mt-10 mb-6 overflow-x-scroll'>
+            <div className='md:w-10/12 w-full min-h-screen md:p-0 p-2 mx-auto mt-10 md:overflow-auto overflow-x-scroll'>
             <table className='border-2 border-collapse w-full p-2 '>
                 <thead className='bg-lightred text-white'>
                     <tr className='h-12'>
@@ -49,7 +49,7 @@ const ManageProducts = () => {
                 </tbody>
             </table>
         </div>
-        <div className='flex justify-center'>
+            <div className='flex justify-center'>
             <Link className='p-2 bg-lightred rounded-md flex items-center text-white mt-5 btn-transition' to='/addproduct'>Add New Product<BsArrowRight className='ml-2'></BsArrowRight></Link>
             </div>
         </>

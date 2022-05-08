@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Loading from '../Loading/Loading';
 import MyProduct from '../MyProduct/MyProduct';
+import { BsArrowLeft } from 'react-icons/bs';
 
 const MyProducts = () => {
     const [myProducts, setMyProducts] = useState([]);
@@ -51,7 +52,7 @@ const MyProducts = () => {
     }
     return (
         <div className='min-h-screen w-10/12 mx-auto'>
-            <div className='rounded-2xl shadow-xl bg-gray-900 md:w-8/12 w-full mx-auto mt-6'>{myProducts?.length <1 ? <><h2 className='uppercase font-bold tracking-tight md:text-3xl text-xl p-3 text-gray-200 text-justify'>Currently you do not have any product of your own please go to add product and add some product</h2><Link to='/addproduct' className='text-xl text-lightred underline p-3 block'>Go to Add Product</Link></> :""}</div>
+            <div className='rounded-2xl shadow-xl bg-gray-900 md:w-8/12 w-full mx-auto mt-6'>{myProducts?.length <1 ? <><h2 className='uppercase font-bold tracking-tight md:text-3xl text-xl p-3 text-gray-200 text-justify'>Currently you do not have any product of your own please go to add product and add some product</h2><Link to='/addproduct' className='text-xl flex items-center gap-2 text-white hover:text-lightred hover:underline p-3'><BsArrowLeft></BsArrowLeft>Go to Add Product</Link></> :""}</div>
             {
                 myProducts.map(myProduct=><MyProduct key={myProduct._id} myProduct={myProduct} handleDelete={handleDelete}></MyProduct>)
             }

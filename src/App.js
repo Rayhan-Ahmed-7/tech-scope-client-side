@@ -15,6 +15,7 @@ import SignUp from './components/SignUp/SignUp';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Footer from './components/Shared/Footer/Footer';
+import Jobs from './components/Jobs/Jobs';
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
           </RequireAuth>
         }></Route>
         <Route path='/blogs' element={<Blogs></Blogs>}></Route>
+        <Route path='/jobs' element={<Jobs></Jobs>}></Route>
         <Route path='/signup' element={<SignUp></SignUp>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/password-reset' element={<PasswordReset></PasswordReset>}></Route>
