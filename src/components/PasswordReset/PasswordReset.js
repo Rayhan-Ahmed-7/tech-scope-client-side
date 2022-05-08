@@ -39,7 +39,7 @@ const PasswordReset = () => {
                     <div className='flex justify-between'>
                         <p onClick={() => navigate("/login")} className='flex items-center hover:text-lightred hover:underline cursor-pointer flex-1'>
                             <BsArrowLeft></BsArrowLeft>
-                            <span className='ml-3 text-lg'>Back to home</span>
+                            <span className='ml-3 text-lg'>Back to login</span>
                         </p>
                         <button className='bg-lightred text-white btn-transition py-2 px-4 rounded-3xl cursor-pointer flex items-center' type="submit">
                             {sending?
