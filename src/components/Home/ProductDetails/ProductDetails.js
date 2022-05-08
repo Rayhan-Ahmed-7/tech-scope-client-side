@@ -25,13 +25,13 @@ const ProductDetails = () => {
     const { name, img, suplierName, description, price, quantity } = product;
     const handleUpdate = async (id) => {
         try {
-            if (quantity >= 0) {
+            if (quantitys >= 1) {
                 setQuantity(quantitys - 1);
                 const response = await axios.put(`https://ancient-fjord-89568.herokuapp.com/products/${id}`, { quantity: quantitys - 1 });
                 console.log(response);
             }
         }
-        catch (error) {
+        catch(error){
             console.log(error);
         }
     }
@@ -58,7 +58,7 @@ const ProductDetails = () => {
                     <h2 className='text-2xl mt-3'>Suplier: {suplierName}</h2>
                     <div className='flex justify-between my-4'>
                         <p className='text-lg'>Price: ${price}</p>
-                        <p className='text-lg'>Quantity: {quantitys<=0 ? <span className='text-white bg-lightred p-2 rounded-md'>sold Out</span> : quantitys}</p>
+                        <p className='text-lg'>Quantity: {quantitys===0 ? <span className='text-white bg-lightred p-2 rounded-md'>sold Out</span> : quantitys}</p>
                     </div>
                     <p>{description}</p>
                     <button onClick={() => handleUpdate(id)} className='mt-5 px-4 py-2 bg-lightred text-white rounded btn-transition'>Delivered</button>

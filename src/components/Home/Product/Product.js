@@ -11,7 +11,7 @@ const Product = ({product,handleUpdate}) => {
             <h2>Suplier Name: {suplierName}</h2>
             <div className='flex justify-between my-4'>
                 <p className='text-lg'>Price: <span className='text-white bg-lightred px-2 text-sm py-1 rounded-md'>${price}</span></p>
-                <p className='text-lg'>Quantity: <span className='text-white bg-lightred px-2 text-sm py-1 rounded-md'>{quantity}</span></p>
+                <p className='text-lg'>Quantity: <span className='text-white bg-lightred px-2 text-sm py-1 rounded-md'>{quantity===0?"soldOut":quantity}</span></p>
             </div>
             <p>{description.slice(0,120)}...see more</p>
             <button onClick={()=>handleUpdate(product._id)} className='bg-lightred px-3 py-2 text-white mt-4 rounded-md btn-transition'>Update</button>
