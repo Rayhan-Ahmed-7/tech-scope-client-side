@@ -22,7 +22,7 @@ const ProductDetails = () => {
     if(loading){
         return <Loading></Loading>
     }
-    const { name, img, suplierName, description, price, quantity } = product;
+    const { _id, name, img, suplierName, description, price, quantity } = product;
     const handleUpdate = async (id) => {
         try {
             if (quantitys >= 1) {
@@ -55,10 +55,11 @@ const ProductDetails = () => {
                 <img className='rounded-xl' src={img} alt="" />
                 <div className='md:ml-5 mt-5'>
                     <h2 className='md:text-4xl text-2xl uppercase font-bold text-gray-800'>{name}</h2>
+                    <p>Product Id: {_id}</p>
                     <h2 className='text-2xl mt-3'>Suplier: {suplierName}</h2>
                     <div className='flex justify-between my-4'>
                         <p className='text-lg'>Price: ${price}</p>
-                        <p className='text-lg'>Quantity: {quantitys===0 ? <span className='text-white bg-lightred p-2 rounded-md'>sold Out</span> : quantitys}</p>
+                        <p className='text-lg'>Quantity: {quantitys===0 ? <span className='text-white bg-lightred p-2 rounded-md'>stock Out</span> : quantitys}</p>
                     </div>
                     <p>{description}</p>
                     <button onClick={() => handleUpdate(id)} className='mt-5 px-4 py-2 bg-lightred text-white rounded btn-transition'>Delivered</button>
