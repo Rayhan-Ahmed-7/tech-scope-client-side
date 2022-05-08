@@ -14,6 +14,7 @@ const MyProducts = () => {
     const navigate = useNavigate();
     const [user] = useAuthState(auth);
     useEffect(() => {
+        //requesting for user product only using user email and jwt access token
         const userProduct = async () => {
             try {
                 const res = await axios.get(`https://ancient-fjord-89568.herokuapp.com/myproducts?email=${user?.email}`,{
@@ -27,6 +28,7 @@ const MyProducts = () => {
             }
             catch(error){
                 //console.log(error)
+                //signing out the user if he/she doesn't have access token
                 if(error.response.status === 401 || error.response.status === 403){
                     signOut(auth);
                     navigate('/login');

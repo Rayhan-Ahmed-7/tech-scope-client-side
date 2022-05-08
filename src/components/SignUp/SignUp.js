@@ -5,6 +5,7 @@ import { BsArrowRight } from 'react-icons/bs';
 import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import axios from 'axios';
 
 const SignUp = () => {
     const navigate = useNavigate();
@@ -26,6 +27,8 @@ const SignUp = () => {
         const password = data.password;
         await createUserWithEmailAndPassword(email, password)
         await updateProfile({ displayName: name })
+        const res = await axios.post('https://ancient-fjord-89568.herokuapp.com/login', { email });
+        localStorage.setItem('accessToken', res?.data.accessToken);
     }
     if(user){
         
