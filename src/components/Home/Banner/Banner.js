@@ -3,7 +3,7 @@ import banner from '../../../images/electronics.png';
 
 const Banner = () => {
     return (
-        <div className='md:w-10/12 w-11/12 mb-10 mx-auto flex items-center md:flex-row flex-col'>
+        <div className='md:w-10/12 w-11/12 mt-8 mb-10 mx-auto flex items-center md:flex-row flex-col'>
             <div className='flex-1 md:order-1 order-2'>
                 <small className='text-lg l-spacing text-[#2B2B2B] font-medium'>TECH SCOPE</small>
                 <h2 className='md:text-6xl text-3xl font-fast py-4 text-[#2B2B2B]'>ELECTRONICS IS <br /> <span className='text-lightred'>THE FUTURE</span></h2>
