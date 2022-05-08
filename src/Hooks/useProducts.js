@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-const useInventories = () => {
+const useProducts = () => {
     const [products, setProducts] = useState([]);
     const [loading,setLoading] = useState(true);
     useEffect(() => {
@@ -14,4 +14,4 @@ const useInventories = () => {
     return [products,setProducts,loading]
 };
 
-export default useInventories;
+export default useProducts;

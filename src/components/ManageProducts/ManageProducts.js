@@ -1,5 +1,4 @@
 import React from 'react';
-import useInventories from '../../Hooks/useInventories';
 import { FaTrash } from 'react-icons/fa';
 import './ManageProducts.css';
 import axios from 'axios';
@@ -7,10 +6,11 @@ import Loading from '../Loading/Loading';
 import { Link } from 'react-router-dom';
 import { BsArrowRight } from 'react-icons/bs';
 import { toast } from 'react-toastify';
+import useProducts from '../../Hooks/useProducts';
 
 const ManageProducts = () => {
     //https://ancient-fjord-89568.herokuapp.com
-    const [products,setProducts,loading] = useInventories();
+    const [products,setProducts,loading] = useProducts();
     console.log(products);
     const handleDelete = async(id)=>{
         const confirmation = window.confirm("You sure about deleting this item.?");

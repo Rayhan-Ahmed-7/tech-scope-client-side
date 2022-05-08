@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import useInventories from '../../../Hooks/useInventories';
+import useProducts from '../../../Hooks/useProducts';
 import Loading from '../../Loading/Loading';
 import Product from '../Product/Product';
 import { BsArrowRight } from 'react-icons/bs';
 
 const Products = () => {
-    const [products,setProducts,loading] = useInventories();
+    const [products,setProducts,loading] = useProducts();
     const navigate = useNavigate();
     const handleUpdate = (id)=>{
         navigate(`/product/${id}`);
